@@ -1,5 +1,7 @@
+import sys
 from selenium import webdriver
 
 wd = webdriver.Chrome()
 wd.get('https://google.com')
-wd.__exit__()
+wd.quit()
+sys.exit()
