@@ -32,3 +32,4 @@ for root_link in root_links:
         print(root_link, sub_link)
         wd.find_element_by_link_text(sub_link).click()
         wait.until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+wd.quit()
