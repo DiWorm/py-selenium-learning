@@ -20,7 +20,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-def test_a():
+def a():
     wd = webdriver.Chrome()
     wait = WebDriverWait(wd, 3) # seconds
     wd.get("http://litecart.stqa.ru/en/")
@@ -31,9 +31,13 @@ def test_a():
     product.click()
     sub_name = wd.find_element_by_css_selector("h1").text
     wd.quit()
-    assert index_name == sub_name
+    if index_name == sub_name:
+        print('name is equal')
+    else:
+        print('name not equal')
+a()
 
-def test_b():
+def b():
     wd = webdriver.Chrome()
     wait = WebDriverWait(wd, 3) # seconds
     wd.get("http://litecart.stqa.ru/en/")
@@ -44,7 +48,16 @@ def test_b():
     product.click()
     sub_regular_price = wd.find_element_by_css_selector("s.regular-price").text
     sub_sale_price = wd.find_element_by_css_selector("strong.campaign-price").text
-    assert index_regulat_price == sub_regular_price
-    assert index_sale_price == sub_sale_price
     wd.quit()
+
+    if index_regulat_price == sub_regular_price:
+        print('regular price is equal')
+    else:
+        print('regular price not equal')
+
+    if index_sale_price == sub_sale_price:
+        print('sale price is equal')
+    else:
+        print('sale price not equal')
+b()
 
