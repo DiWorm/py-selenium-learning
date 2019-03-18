@@ -20,44 +20,36 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-def a():
-    wd = webdriver.Chrome()
-    wait = WebDriverWait(wd, 3) # seconds
-    wd.get("http://litecart.stqa.ru/en/")
 
-    #get product
-    product = wd.find_element_by_css_selector("div#box-campaigns li.product a.link")
-    index_name = product.find_element_by_css_selector("div.name").text
-    product.click()
-    sub_name = wd.find_element_by_css_selector("h1").text
-    wd.quit()
-    if index_name == sub_name:
-        print('name is equal')
-    else:
-        print('name not equal')
-a()
+wd = webdriver.Chrome()
+wait = WebDriverWait(wd, 3) # seconds
+wd.get("http://litecart.stqa.ru/en/")
 
-def b():
-    wd = webdriver.Chrome()
-    wait = WebDriverWait(wd, 3) # seconds
-    wd.get("http://litecart.stqa.ru/en/")
+product = wd.find_element_by_css_selector("div#box-campaigns li.product a.link")
 
-    product = wd.find_element_by_css_selector("div#box-campaigns li.product a.link")
-    index_regulat_price = product.find_element_by_css_selector("s.regular-price").text
-    index_sale_price = product.find_element_by_css_selector("strong.campaign-price").text
-    product.click()
-    sub_regular_price = wd.find_element_by_css_selector("s.regular-price").text
-    sub_sale_price = wd.find_element_by_css_selector("strong.campaign-price").text
-    wd.quit()
+index_name = product.find_element_by_css_selector("div.name").text
+index_regulat_price = product.find_element_by_css_selector("s.regular-price").text
+index_sale_price = product.find_element_by_css_selector("strong.campaign-price").text
 
-    if index_regulat_price == sub_regular_price:
-        print('regular price is equal')
-    else:
-        print('regular price not equal')
+product.click()
 
-    if index_sale_price == sub_sale_price:
-        print('sale price is equal')
-    else:
-        print('sale price not equal')
-b()
+
+sub_name = wd.find_element_by_css_selector("h1").text
+sub_regular_price = wd.find_element_by_css_selector("s.regular-price").text
+sub_sale_price = wd.find_element_by_css_selector("strong.campaign-price").text
+
+wd.quit()
+
+if index_name == sub_name:
+    print('name is equal')
+else:
+    print('name not equal')
+if index_regulat_price == sub_regular_price:
+    print('regular price is equal')
+else:
+    print('regular price not equal')
+if index_sale_price == sub_sale_price:
+    print('sale price is equal')
+else:
+    print('sale price not equal')
 
