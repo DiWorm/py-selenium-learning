@@ -133,5 +133,7 @@ def funct (driver):
     else:
         print('sub Sale font not bigger')
 funct('ie')
+print('====')
 funct('Chrome')
+print('====')
 funct('Firefox')
