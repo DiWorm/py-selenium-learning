@@ -34,3 +34,16 @@ element = wait.until(EC.presence_of_element_located((By.NAME, "q")))
 #find element by JS (Execute script) (nice wuth jquerry)
 links = driver.execute_script("return $$('a:contains((WebDriver)')")
 ####################################################################
+
+#send keys
+from selenium.webdriver.common.keys import Keys
+search_field.send_keys("selenium" + Keys.ENTER)
+
+# если в поле есть маска -- надо перед вводом текста перейти в начало
+date_field.send_keys(Keys.HOME + "01.01.2001")
+####################################################################
+
+#drag n drop
+from selenium.webdriver.common.action_chains import ActionChains
+ActionChains(driver).move_to_element(drag).click_and_hold().move_to_element(drop).release().perform()
+####################################################################

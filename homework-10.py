@@ -27,6 +27,8 @@ def funct (driver):
         wd = webdriver.Chrome()
     elif driver == 'Firefox':
         wd = webdriver.Firefox()
+    elif driver == 'ie':
+        wd = webdriver.Ie()
     else:
         return False
     wait = WebDriverWait(wd, 3) # seconds
@@ -130,6 +132,6 @@ def funct (driver):
         print('sub Sale font is bigger')
     else:
         print('sub Sale font not bigger')
-
+funct('ie')
 funct('Chrome')
 funct('Firefox')
