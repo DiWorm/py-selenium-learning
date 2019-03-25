@@ -47,3 +47,34 @@ date_field.send_keys(Keys.HOME + "01.01.2001")
 from selenium.webdriver.common.action_chains import ActionChains
 ActionChains(driver).move_to_element(drag).click_and_hold().move_to_element(drop).release().perform()
 ####################################################################
+
+
+#wait element
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+wait = WebDriverWait(driver, 10) # seconds
+# обратите внимание, что локатор передается как tuple!
+element = wait.until(EC.presence_of_element_located((By.NAME, "q")))
+element2 = wait.until(lambda d: d.find_element_by_name("q"))
+####################################################################
+
+#refresh element
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+wait = WebDriverWait(driver, 10) # seconds
+driver.refresh()
+wait.until(EC.staleness_of(element))
+####################################################################
+
+
+#wait visible
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+wait = WebDriverWait(driver, 10) # seconds
+wait.until(EC.visibility_of(element))
+####################################################################
