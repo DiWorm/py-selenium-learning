@@ -78,3 +78,34 @@ from selenium.webdriver.support import expected_conditions as EC
 wait = WebDriverWait(driver, 10) # seconds
 wait.until(EC.visibility_of(element))
 ####################################################################
+
+#dismiss alerts
+alert = driver.switch_to_alert()
+alert_text = alert.text
+alert.accept()
+# либо alert.dismiss()
+####################################################################
+
+#new tabs
+main_window = driver.current_window_handle
+old_windows = driver.window_handles
+link.click() # открывает новое окно
+# ожидание появления нового окна,
+# идентификатор которого отсутствует в списке oldWindows,
+# остаётся в качестве самостоятельного упражнения
+new_window = wait.until(there_is_window_other_than(old_windows))
+driver.switch_to_window(new_window)
+# ...
+driver.close()
+driver.switch_to_window(main_window)
+####################################################################
+
+#switch to frame
+driver.switch_to_frame(driver.find_element_by_tag_name("iframe"))
+driver.switch_to_default_content()
+####################################################################
+
+#some shit with windows
+driver.set_window_size(800, 600)
+driver.maximize_window()
+####################################################################
