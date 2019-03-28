@@ -30,7 +30,8 @@ for i in range(0, count_links):
     links[i].click()
     new_window = wd.window_handles
     new_window.remove(main_window)
-
+    #Как писал ранее в скайпе, есть проблема с WebDriverWait(wd, 1).until(EC.presence_of_element_located(( By.CSS_SELECTOR, "body"))), для ожидания полной загрузки страницы. Но был дан ответ, что это не обязательно. Добавил проверку ниже.
+    WebDriverWait(wd, 30).until(EC.number_of_windows_to_be(2))
     wd.switch_to.window(new_window[0])
     wd.close()
     wd.switch_to.window(main_window)
