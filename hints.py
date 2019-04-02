@@ -109,3 +109,57 @@ driver.switch_to_default_content()
 driver.set_window_size(800, 600)
 driver.maximize_window()
 ####################################################################
+
+
+#work with server
+driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_capabilities={"browserName": "chrome"})
+####################################################################
+
+##event finding c#
+from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
+class MyListener(AbstractEventListener):
+  def before_find(self, by, value, driver):
+    print(by, value)
+  def after_find(self, by, value, driver):
+    print(by, value, "found")
+  def on_exception(self, exception, driver):
+    print(exception)
+wd = EventFiringWebDriver(webdriver.Chrome(), MyListener())
+####################################################################
+
+#get screenshoot
+driver.get_screenshot_as_file('screen.png')
+####################################################################
+
+#get browser logs
+for l in driver.get_log("browser"):
+    print(l)
+####################################################################
+
+#proxy traffic
+driver = webdriver.Chrome(desired_capabilities={"proxy": {"proxyType": "MANUAL", "httpProxy": "localhost:8888"}})
+####################################################################
+'''
+BrowserMobProxy (Java):
+https://github.com/lightbody/browsermob-proxy
+BrowserMobProxy, обёртка для C#:
+https://github.com/AutomatedTester/AutomatedTester.BrowserMob
+Пример использования:
+http://automatedtester.science/load-testing-with-selenium-and-browsermob-proxy/
+Ещё одна обёртка для C#:
+https://github.com/tmulkern/RemoteBrowserMobProxy
+BrowserMobProxy, обёртка для Python:
+https://github.com/AutomatedTester/browsermob-proxy-py
+BrowserMobProxy, обёртка для Ruby:
+https://github.com/jarib/browsermob-proxy-rb
+BrowserMobProxy, обёртка для JavaScript:
+https://github.com/zzo/browsermob-node
+Что можно делать при помощи прокси:
+http://selenium2.ru/articles/106-selenium-i-browsermobproxy-vmeste-veselee.html
+Titanium: встраиваемый прокси на .Net:
+https://github.com/justcoding121/Titanium-Web-Proxy
+FiddlerCore: встраиваемый прокси на .Net:
+http://www.telerik.com/fiddler/fiddlercore
+mitmproxy: встраиваемый прокси на Python:
+https://mitmproxy.org/
+'''
