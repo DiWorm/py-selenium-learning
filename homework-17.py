@@ -40,7 +40,7 @@ for duck in ducks:
     wd.find_element_by_link_text(duck).click()
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "button[name=save]")))
     for l in wd.get_log("browser"):
-        print('Browser logs:',l)
+        print('Browser logs:', l)
     wd.back()
 
 wd.quit()
